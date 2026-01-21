@@ -1,0 +1,7 @@
+[
+  { "id": "category-001", "name": "Audio" },
+  { "id": "category-002", "name": "Peripherals" },
+  { "id": "category-003", "name": "Displays" },
+  { "id": "category-004", "name": "Accessories" },
+  { "id": "category-005", "name": "Gadgets" }
+]

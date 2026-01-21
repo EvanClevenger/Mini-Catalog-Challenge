@@ -1,0 +1,71 @@
+
+Switch Frontend Take-Home Challenge
+============================
+
+Build a small “Mini Catalog” web app where users can browse items, search/filter/sort them, view details, and mark favorites. 
+
+
+1) Goals
+--------
+We’re assessing:
+- TypeScript fundamentals and practical frontend skills
+- Clean, maintainable code and project structure
+- Data handling (search/filter/sort), basic async flows, and state
+- Responsive layout and accessibility basics
+- Small but meaningful tests
+- Thoughtful trade-offs and documentation
+
+
+2) Requirements
+---------------
+Language:
+- TypeScript (required)
+
+Framework/Tooling:
+- Your choice. React and/or Next.js are encouraged but not required.
+- Styling is up to you. We use Tailwind, but use whatever you are compfortable with. (Vanilla CSS, CSS Modules, Tailwind, CSS-in-JS, etc.)
+- Feel free to use any additional libraries of your choice, but keep bundle size in mind.
+
+Core Features:
+- Catalog List:
+  - Display a list or grid of items (ex. title/name, category, short description).
+  - Search by name/description.
+  - Filter by category.
+  - Sort by one or more of: name, price, rating, category.
+  - Show loading/empty/error states if you simulate fetching.
+- Item Detail:
+  - Dedicated page/route OR a modal with more info (e.g., full description, price/rating).
+  - Include a Favorite toggle.
+- Favorites:
+  - Favorite/unfavorite items from list and detail.
+  - Persist favorites using localStorage.
+- Responsive & Accessible:
+  - Usable on mobile through desktop (≈ 320px to 1440px+).
+  - Semantic HTML, labeled inputs, visible focus, reasonable color contrast.
+  - Keyboard navigable (tab, enter/space on buttons/controls).
+
+Nice-to-Have (Optional, do only if time permits):
+- Dark mode toggle (persisted; respects prefers-color-scheme if you like).
+- Debounced search and URL-synced state (e.g., ?q=&category=&sort=).
+- Skeleton loaders for initial load.
+- Any other features you want to add. Feel free to get creative!
+
+
+3) Scope Guardrails
+-------------------
+- Data Source: Use the sample JSON in this repo or your own small dataset.
+- No backend required. You may simulate network latency/errors with a small helper.
+- If AI assistance is used, please explain for which tasks and how.
+- Please return within 1 week. If time runs short, complete the core flows and note trade-offs.
+
+
+4) Deliverables
+---------------
+Please provide:
+- A repository link (GitHub/GitLab/etc.) or a ZIP of the project.
+- A README including:
+  - How to run and build the project
+  - Tech choices and trade-offs
+  - What you’d improve with more time
+  - Any deviations from the spec
+- (Optional) A live deployment link (Vercel/Netlify/etc.)

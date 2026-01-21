@@ -1,0 +1,802 @@
+[
+  {
+    "id": "item-001",
+    "name": "Wireless Earbuds",
+    "category": "category-001",
+    "price": 49.99,
+    "rating": 4.2,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-002",
+    "name": "Mechanical Keyboard",
+    "category": "category-002",
+    "price": 129.0,
+    "rating": 4.5,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-003",
+    "name": "Gaming Mouse",
+    "category": "category-002",
+    "price": 39.5,
+    "rating": 4.1,
+    "description": "Computer peripheral designed for precision and speed."
+  },
+  {
+    "id": "item-004",
+    "name": "27\" 4K Monitor",
+    "category": "category-003",
+    "price": 389.99,
+    "rating": 4.6,
+    "description": "High‑quality display with accurate colors and sharp image."
+  },
+  {
+    "id": "item-005",
+    "name": "Bluetooth Speaker",
+    "category": "category-001",
+    "price": 79.0,
+    "rating": 4.0,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-006",
+    "name": "Smartwatch",
+    "category": "category-005",
+    "price": 199.0,
+    "rating": 4.3,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-007",
+    "name": "Portable Charger",
+    "category": "category-004",
+    "price": 29.99,
+    "rating": 4.2,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-008",
+    "name": "Noise‑Canceling Headphones",
+    "category": "category-001",
+    "price": 249.0,
+    "rating": 4.7,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-009",
+    "name": "HD Webcam",
+    "category": "category-002",
+    "price": 59.0,
+    "rating": 4.1,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-010",
+    "name": "USB‑C Hub",
+    "category": "category-004",
+    "price": 34.99,
+    "rating": 3.9,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-011",
+    "name": "Laptop Stand",
+    "category": "category-004",
+    "price": 42.0,
+    "rating": 4.0,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-012",
+    "name": "Ergonomic Mouse",
+    "category": "category-002",
+    "price": 49.0,
+    "rating": 4.2,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-013",
+    "name": "Smart Lamp",
+    "category": "category-005",
+    "price": 69.99,
+    "rating": 4.4,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-014",
+    "name": "VR Headset",
+    "category": "category-005",
+    "price": 429.0,
+    "rating": 4.3,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-015",
+    "name": "Fitness Tracker",
+    "category": "category-005",
+    "price": 89.0,
+    "rating": 4.0,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-016",
+    "name": "External SSD",
+    "category": "category-002",
+    "price": 149.0,
+    "rating": 4.6,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-017",
+    "name": "Drawing Tablet",
+    "category": "category-002",
+    "price": 119.0,
+    "rating": 4.1,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-018",
+    "name": "USB Microphone",
+    "category": "category-001",
+    "price": 79.99,
+    "rating": 4.3,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-019",
+    "name": "Smart Thermostat",
+    "category": "category-005",
+    "price": 169.0,
+    "rating": 4.2,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-020",
+    "name": "Action Camera",
+    "category": "category-005",
+    "price": 249.99,
+    "rating": 4.4,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-021",
+    "name": "E‑ink Reader",
+    "category": "category-005",
+    "price": 129.0,
+    "rating": 4.1,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-022",
+    "name": "Docking Station",
+    "category": "category-002",
+    "price": 179.0,
+    "rating": 4.3,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-023",
+    "name": "LED Light Strip",
+    "category": "category-004",
+    "price": 24.99,
+    "rating": 4.0,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-024",
+    "name": "Thunderbolt Cable",
+    "category": "category-004",
+    "price": 29.0,
+    "rating": 4.2,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-025",
+    "name": "Wireless Charger",
+    "category": "category-004",
+    "price": 19.99,
+    "rating": 3.9,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-026",
+    "name": "Over‑Ear Headphones",
+    "category": "category-001",
+    "price": 139.0,
+    "rating": 4.1,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-027",
+    "name": "Compact Keyboard",
+    "category": "category-002",
+    "price": 99.0,
+    "rating": 4.2,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-028",
+    "name": "34\" Ultrawide Monitor",
+    "category": "category-003",
+    "price": 599.0,
+    "rating": 4.5,
+    "description": "High‑quality display with accurate colors and sharp image."
+  },
+  {
+    "id": "item-029",
+    "name": "Cable Organizer",
+    "category": "category-004",
+    "price": 12.99,
+    "rating": 4.0,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-030",
+    "name": "Smart Plug",
+    "category": "category-005",
+    "price": 14.99,
+    "rating": 4.1,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-031",
+    "name": "Studio Headphones",
+    "category": "category-001",
+    "price": 159.0,
+    "rating": 4.4,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-032",
+    "name": "Wireless Mouse",
+    "category": "category-002",
+    "price": 39.99,
+    "rating": 4.0,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-033",
+    "name": "24\" 1080p Monitor",
+    "category": "category-003",
+    "price": 129.99,
+    "rating": 4.0,
+    "description": "High‑quality display with accurate colors and sharp image."
+  },
+  {
+    "id": "item-034",
+    "name": "Laptop Sleeve",
+    "category": "category-004",
+    "price": 18.99,
+    "rating": 4.1,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-035",
+    "name": "Bluetooth Tracker",
+    "category": "category-005",
+    "price": 24.99,
+    "rating": 4.0,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-036",
+    "name": "In‑Ear Monitors",
+    "category": "category-001",
+    "price": 59.0,
+    "rating": 4.1,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-037",
+    "name": "Gaming Controller",
+    "category": "category-002",
+    "price": 59.99,
+    "rating": 4.3,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-038",
+    "name": "15.6\" Portable Monitor",
+    "category": "category-003",
+    "price": 219.0,
+    "rating": 4.2,
+    "description": "High‑quality display with accurate colors and sharp image."
+  },
+  {
+    "id": "item-039",
+    "name": "Cable Kit",
+    "category": "category-004",
+    "price": 22.0,
+    "rating": 3.9,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-040",
+    "name": "Smart Light Switch",
+    "category": "category-005",
+    "price": 29.99,
+    "rating": 4.1,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-041",
+    "name": "ANC Earbuds",
+    "category": "category-001",
+    "price": 99.0,
+    "rating": 4.2,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-042",
+    "name": "Tenkeyless Keyboard",
+    "category": "category-002",
+    "price": 119.0,
+    "rating": 4.3,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-043",
+    "name": "Color‑Accurate Monitor",
+    "category": "category-003",
+    "price": 399.0,
+    "rating": 4.4,
+    "description": "High‑quality display with accurate colors and sharp image."
+  },
+  {
+    "id": "item-044",
+    "name": "Desk Mat",
+    "category": "category-004",
+    "price": 16.99,
+    "rating": 4.0,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-045",
+    "name": "Smart Button",
+    "category": "category-005",
+    "price": 12.99,
+    "rating": 3.8,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-046",
+    "name": "Open‑Back Headphones",
+    "category": "category-001",
+    "price": 219.0,
+    "rating": 4.5,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-047",
+    "name": "Macro Pad",
+    "category": "category-002",
+    "price": 59.0,
+    "rating": 4.1,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-048",
+    "name": "4K HDR Monitor",
+    "category": "category-003",
+    "price": 499.0,
+    "rating": 4.3,
+    "description": "High‑quality display with accurate colors and sharp image."
+  },
+  {
+    "id": "item-049",
+    "name": "USB‑C Cable 2m",
+    "category": "category-004",
+    "price": 11.99,
+    "rating": 4.0,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-050",
+    "name": "Smart Door Sensor",
+    "category": "category-005",
+    "price": 19.99,
+    "rating": 4.1,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-051",
+    "name": "Bluetooth Headset",
+    "category": "category-001",
+    "price": 59.99,
+    "rating": 4.1,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-052",
+    "name": "Ergonomic Keyboard",
+    "category": "category-002",
+    "price": 139.0,
+    "rating": 4.2,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-053",
+    "name": "Monitor Riser Stand",
+    "category": "category-004",
+    "price": 49.99,
+    "rating": 3.9,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-054",
+    "name": "Cable Clips",
+    "category": "category-004",
+    "price": 8.99,
+    "rating": 4.0,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-055",
+    "name": "Smart Temp Sensor",
+    "category": "category-005",
+    "price": 21.99,
+    "rating": 4.2,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-056",
+    "name": "On‑Ear Headphones",
+    "category": "category-001",
+    "price": 49.0,
+    "rating": 3.9,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-057",
+    "name": "Wireless Numpad",
+    "category": "category-002",
+    "price": 39.99,
+    "rating": 4.0,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-058",
+    "name": "Portable 2K Monitor",
+    "category": "category-003",
+    "price": 249.0,
+    "rating": 4.2,
+    "description": "High‑quality display with accurate colors and sharp image."
+  },
+  {
+    "id": "item-059",
+    "name": "Screen Cleaner Kit",
+    "category": "category-004",
+    "price": 9.99,
+    "rating": 4.1,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-060",
+    "name": "Smart Leak Sensor",
+    "category": "category-005",
+    "price": 29.99,
+    "rating": 4.3,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-061",
+    "name": "Studio Microphone",
+    "category": "category-001",
+    "price": 129.0,
+    "rating": 4.4,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-062",
+    "name": "Gaming Keypad",
+    "category": "category-002",
+    "price": 79.0,
+    "rating": 4.0,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-063",
+    "name": "27\" IPS Office Monitor",
+    "category": "category-003",
+    "price": 179.0,
+    "rating": 4.1,
+    "description": "High‑quality display with accurate colors and sharp image."
+  },
+  {
+    "id": "item-064",
+    "name": "Cable Sleeve",
+    "category": "category-004",
+    "price": 13.99,
+    "rating": 4.0,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-065",
+    "name": "Smart Motion Sensor",
+    "category": "category-005",
+    "price": 24.99,
+    "rating": 4.2,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-066",
+    "name": "Hi‑Res USB DAC",
+    "category": "category-001",
+    "price": 99.0,
+    "rating": 4.3,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-067",
+    "name": "Low‑Profile Keyboard",
+    "category": "category-002",
+    "price": 109.0,
+    "rating": 4.1,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-068",
+    "name": "Mini 4K Monitor",
+    "category": "category-003",
+    "price": 329.0,
+    "rating": 4.2,
+    "description": "High‑quality display with accurate colors and sharp image."
+  },
+  {
+    "id": "item-069",
+    "name": "Velcro Cable Ties",
+    "category": "category-004",
+    "price": 7.99,
+    "rating": 4.0,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-070",
+    "name": "Smart Night Light",
+    "category": "category-005",
+    "price": 17.99,
+    "rating": 4.1,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-071",
+    "name": "Wireless Over‑Ears",
+    "category": "category-001",
+    "price": 139.0,
+    "rating": 4.2,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-072",
+    "name": "Trackball Mouse",
+    "category": "category-002",
+    "price": 69.99,
+    "rating": 4.1,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-073",
+    "name": "Creator Monitor",
+    "category": "category-003",
+    "price": 549.0,
+    "rating": 4.5,
+    "description": "High‑quality display with accurate colors and sharp image."
+  },
+  {
+    "id": "item-074",
+    "name": "USB‑C Wall Charger",
+    "category": "category-004",
+    "price": 29.99,
+    "rating": 4.2,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-075",
+    "name": "Smart IR Blaster",
+    "category": "category-005",
+    "price": 22.99,
+    "rating": 4.0,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-076",
+    "name": "Planar Magnetic Headphones",
+    "category": "category-001",
+    "price": 299.0,
+    "rating": 4.5,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-077",
+    "name": "Wireless Receiver",
+    "category": "category-002",
+    "price": 19.99,
+    "rating": 3.9,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-078",
+    "name": "USB‑C Portable Display",
+    "category": "category-003",
+    "price": 239.0,
+    "rating": 4.2,
+    "description": "High‑quality display with accurate colors and sharp image."
+  },
+  {
+    "id": "item-079",
+    "name": "Cable Management Box",
+    "category": "category-004",
+    "price": 21.99,
+    "rating": 4.1,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-080",
+    "name": "Smart Contact Sensor",
+    "category": "category-005",
+    "price": 19.99,
+    "rating": 4.0,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-081",
+    "name": "Closed‑Back Headphones",
+    "category": "category-001",
+    "price": 169.0,
+    "rating": 4.3,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-082",
+    "name": "Wireless Presenter",
+    "category": "category-002",
+    "price": 34.99,
+    "rating": 4.0,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-083",
+    "name": "Frameless 24\" Monitor",
+    "category": "category-003",
+    "price": 189.0,
+    "rating": 4.1,
+    "description": "High‑quality display with accurate colors and sharp image."
+  },
+  {
+    "id": "item-084",
+    "name": "MagSafe Stand",
+    "category": "category-004",
+    "price": 27.99,
+    "rating": 4.2,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-085",
+    "name": "Smart Water Valve",
+    "category": "category-005",
+    "price": 59.99,
+    "rating": 4.1,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-086",
+    "name": "Hi‑Fi Amp",
+    "category": "category-001",
+    "price": 229.0,
+    "rating": 4.4,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-087",
+    "name": "Wireless Trackpad",
+    "category": "category-002",
+    "price": 119.0,
+    "rating": 4.1,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-088",
+    "name": "27\" QHD Monitor",
+    "category": "category-003",
+    "price": 329.0,
+    "rating": 4.3,
+    "description": "High‑quality display with accurate colors and sharp image."
+  },
+  {
+    "id": "item-089",
+    "name": "Cable Raceway",
+    "category": "category-004",
+    "price": 18.99,
+    "rating": 4.0,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-090",
+    "name": "Smart Vibration Sensor",
+    "category": "category-005",
+    "price": 23.99,
+    "rating": 4.0,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-091",
+    "name": "True Wireless Buds",
+    "category": "category-001",
+    "price": 79.99,
+    "rating": 4.1,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-092",
+    "name": "Mechanical Numpad",
+    "category": "category-002",
+    "price": 49.99,
+    "rating": 4.2,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-093",
+    "name": "USB‑C 5K Monitor",
+    "category": "category-003",
+    "price": 799.0,
+    "rating": 4.5,
+    "description": "High‑quality display with accurate colors and sharp image."
+  },
+  {
+    "id": "item-094",
+    "name": "Cable Winder",
+    "category": "category-004",
+    "price": 9.99,
+    "rating": 3.9,
+    "description": "Everyday accessory that improves setup organization."
+  },
+  {
+    "id": "item-095",
+    "name": "Smart Home Hub",
+    "category": "category-005",
+    "price": 59.0,
+    "rating": 4.2,
+    "description": "Smart gadget for home or office automations."
+  },
+  {
+    "id": "item-096",
+    "name": "Desktop Headphone Amp",
+    "category": "category-001",
+    "price": 189.0,
+    "rating": 4.4,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-097",
+    "name": "Condenser Microphone",
+    "category": "category-001",
+    "price": 99.0,
+    "rating": 4.3,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-098",
+    "name": "USB Audio Interface",
+    "category": "category-002",
+    "price": 129.0,
+    "rating": 4.2,
+    "description": "Computer peripheral designed for comfort and productivity."
+  },
+  {
+    "id": "item-099",
+    "name": "Beamforming Mic Bar",
+    "category": "category-001",
+    "price": 149.0,
+    "rating": 4.1,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  },
+  {
+    "id": "item-100",
+    "name": "Bluetooth Soundbar",
+    "category": "category-001",
+    "price": 179.0,
+    "rating": 4.2,
+    "description": "Audio gear with clear, balanced sound and reliable components."
+  }
+]
