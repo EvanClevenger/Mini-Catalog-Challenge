@@ -1,4 +1,5 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
+import "./index.css";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -35,28 +36,38 @@ function App() {
 
   return (
     <>
-      <div className="w-full h-full bg-gray-900">
-        <div>
+      <div className="min-h-screen w-full bg-gray-900">
+        <div className="max-w-6xl mx-auto px-4 py-8">
           <input
-            className="searchBar"
+            className="w-full rounded-xl border border-gray-600 bg-gray-800 text-gray-100 placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
             placeholder="Search devices..."
             type="text"
-            onChange={(e) => setSearch(e.target.value)}
-          ></input>
+            onChange={(e) => setSearch(e.target.value)}></input>
         </div>
-        <div>
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {devices.map((data, index) => (
-            <div className="w-20px h-25x bg-white" key={index}>
-              {" "}
-              <div className="text-bold">{data.name}</div>{" "}
+            <div
+              key={index}
+              className="rounded-xl bg-gray-800 border border-gray-700 p-5 shadow-md hover:shadow-lg transition">
               <img
-                src={catagoryImageMap[devices.catagory]}
-                alt={data.name}
-                className="w-full h-15 object-contain"
+                src={catagoryImageMap[data.catagory]}
+                className="w-full h-40 object-contain mb-4"
               />
-              <div>{data.price}</div>
-              <div>{data.rating}</div>
-              <div>{data.description}</div>
+
+              <h1 className="text-lg font-semibold text-gray-100 mb-1">
+                {data.name}
+              </h1>
+
+              <div className="text-blue-300 font-medium mb-1">
+                ${data.price}
+              </div>
+              <div className="text-gray-400 text-sm mb-2">
+                {data.rating} / 5
+              </div>
+
+              <p className="text-gray-300 text-sm leading-relaxed">
+                {data.description}
+              </p>
             </div>
           ))}
         </div>
