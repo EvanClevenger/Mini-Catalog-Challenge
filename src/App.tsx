@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import "./index.css";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [search, setSearch] = useState("");
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [search, setSearch] = useState<string>("");
   const [catagories, setCatagories] = useState<Array<any>>([]);
   const [devices, setDevices] = useState<Array<any>>([
     {
+      // default item to show before fetch
       id: "item-001",
       name: "Wireless Earbuds",
       category: "category-001",
@@ -16,7 +17,8 @@ function App() {
         "Audio gear with clear, balanced sound and reliable components.",
     },
   ]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [catagorySelected, setCatagorySelected] = useState<string>("");
 
   const catagoryImageMap: Record<string, string> = {
     "category-001": "/images/Audio.png",
@@ -25,6 +27,10 @@ function App() {
     "category-004": "/images/Accessories.png",
     "category-005": "/images/Gadgets.png",
   };
+
+  const filteredDevices = devices.filter((device) =>
+    device.name.toLowerCase().includes(search.toLowerCase()),
+  ); // Filter devices based on search input
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +41,7 @@ function App() {
 
       const [devicesData, categoriesData] = results;
 
-      // Devices
+      // Devices fetch
       if (devicesData.status === "fulfilled") {
         try {
           const devices = await devicesData.value.json();
@@ -47,7 +53,7 @@ function App() {
         console.error("Failed to fetch devices");
       }
 
-      // Categories
+      // Categories fetch
       if (categoriesData.status === "fulfilled") {
         try {
           const categories = await categoriesData.value.json();
@@ -59,7 +65,7 @@ function App() {
         console.error("Failed to fetch categories");
       }
     };
-
+    // We want fetch data from these mock APIs independently, as to not have both fetches fail if only one fails
     fetchData();
   }, []);
 
@@ -71,24 +77,27 @@ function App() {
             className="w-full rounded-xl border border-gray-600 bg-gray-800 text-gray-100 placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
             placeholder="Search devices..."
             type="text"
-            onChange={(e) => setSearch(e.target.value)}></input>
+            onChange={(e) => setSearch(e.target.value)}
+          ></input>
         </div>
 
         <div className="mt-6 flex flex-wrap gap-3">
           {catagories.map((data, index) => (
             <button
               key={index}
-              className="px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-gray-200 hover:bg-gray-700 hover:border-gray-600 transition shadow-sm">
+              className="px-4 py-2 m-4 rounded-lg bg-gray-800 border border-gray-700 text-gray-200 hover:bg-gray-700 hover:border-gray-600 transition shadow-sm"
+            >
               {data.name}
             </button>
           ))}
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 m-4">
-          {devices.map((data, index) => (
+          {filteredDevices.map((data, index) => (
             <div
               key={index}
-              className="rounded-xl bg-gray-800 border border-gray-700 p-5 shadow-md hover:shadow-lg transition">
+              className="rounded-xl bg-gray-800 border border-gray-700 p-5 shadow-md hover:shadow-lg transition"
+            >
               <img
                 src={catagoryImageMap[data.catagory]}
                 className="w-full h-40 object-contain mb-4"
