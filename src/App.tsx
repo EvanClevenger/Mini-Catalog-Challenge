@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import "./index.css";
-import { SearchBar } from "./components/SearchBar";
-import { CategoryFilters } from "./components/CategoryFilters";
-import { FavoriteButton } from "./components/FavoriteButton";
-import { Spinner } from "./components/Spinner";
+import { SearchBar } from "../components/SearchBar";
+import { CategoryFilters } from "../components/CategoryFilters";
+import { FavoriteButton } from "../components/FavoriteButton";
+import { Spinner } from "../components/Spinner";
 
-import { useFavorites } from "./hooks/useFavorite";
+import { useFavorites } from "../hooks/useFavorite";
 
 function App() {
   // const [darkMode, setDarkMode] = useState<boolean>(false);
