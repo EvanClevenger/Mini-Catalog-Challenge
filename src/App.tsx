@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import "./index.css";
-import { useFavorites } from "./Favorite";
+import { SearchBar } from "./components/SearchBar";
+import { CategoryFilters } from "./components/CategoryFilters";
+import { FavoriteButton } from "./components/FavoriteButton";
+import { Spinner } from "./components/Spinner";
+
+import { useFavorites } from "./hooks/useFavorite";
 
 function App() {
   // const [darkMode, setDarkMode] = useState<boolean>(false);
@@ -9,6 +14,7 @@ function App() {
   const [categoryId, setCategoryId] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
   const [devices, setDevices] = useState<Array<any>>([]);
+  const [sortBy, setSortBy] = useState<"none" | "price" | "rating">("none");
 
   const categoryImageMap: Record<string, string> = {
     "category-001": "/images/Audio.png",
@@ -20,7 +26,7 @@ function App() {
 
   const { toggleFavorite, favorites, favoritesLoaded } = useFavorites();
 
-  const filteredDevices = devices.filter((device) => {
+  let filteredDevices = devices.filter((device) => {
     const matchSearch = device.name
       .toLowerCase()
       .includes(search.toLowerCase());
@@ -28,6 +34,12 @@ function App() {
 
     return matchSearch && matchCategory;
   }); // Filter devices based on search input and selected category
+
+  if (sortBy === "price") {
+    filteredDevices = [...filteredDevices].sort((a, b) => a.price - b.price);
+  } else if (sortBy === "rating") {
+    filteredDevices = [...filteredDevices].sort((a, b) => b.rating - a.rating);
+  } // Sort devices based on selected criteria , ... ensures we don't mutate original array
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,63 +69,50 @@ function App() {
     //We fetch data from these mock APIs independently, as to not have both fetches fail if only one fails
   }, []);
 
-  type FavoriteButtonProps = {
-    id: string;
-    favorites: Record<string, boolean>;
-    toggleFavorite: (id: string) => void;
-  };
-  const FavoriteButton = ({
-    id,
-    favorites,
-    toggleFavorite,
-  }: FavoriteButtonProps) => {
-    return (
-      <button
-        onClick={() => toggleFavorite(id)}
-        className="absolute bottom-3 right-3 text-lg"
-      >
-        {favorites[id] ? "❤️" : "🤍"}
-      </button>
-    );
-  };
-
   return (
     <>
       <div className="min-h-screen w-full bg-gray-900">
         <div className="max-w-6xl mx-auto px-4 py-8">
-          <input
-            className="w-full rounded-xl border border-gray-600 bg-gray-800 text-gray-100 placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
-            placeholder="Search devices..."
-            type="text"
-            onChange={(e) => setSearch(e.target.value)}
-          ></input>
+          <SearchBar setSearch={setSearch} />
         </div>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          {category.map((data, index) => (
-            <button
-              key={index}
-              className="px-4 py-2 m-4 rounded-lg bg-gray-800 border border-gray-700 text-gray-200 hover:bg-gray-700 hover:border-gray-600 transition shadow-sm"
-              onClick={() => setCategoryId(data.id)}
-            >
-              {data.name}
-            </button>
-          ))}
+          <CategoryFilters category={category} setCategoryId={setCategoryId} />
+          <button
+            onClick={() => setSortBy(sortBy === "price" ? "none" : "price")}
+            className={`px-4 py-2 m-4 rounded-lg border transition shadow-sm ${
+              sortBy === "price"
+                ? "bg-blue-600 border-blue-500 text-white"
+                : "bg-gray-800 border-gray-700 text-gray-200 hover:bg-gray-700 hover:border-gray-600"
+            }`}
+          >
+            Sort by Price
+          </button>
+          <button
+            onClick={() => setSortBy(sortBy === "rating" ? "none" : "rating")}
+            className={`px-4 py-2 m-4 rounded-lg border transition shadow-sm ${
+              sortBy === "rating"
+                ? "bg-blue-600 border-blue-500 text-white"
+                : "bg-gray-800 border-gray-700 text-gray-200 hover:bg-gray-700 hover:border-gray-600"
+            }`}
+          >
+            Sort by Rating
+          </button>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 m-4">
-          {loading || !favoritesLoaded ? ( //loading tracks device fetch, loaded tracks favorites fetch
-            <div className="col-span-full flex justify-center py-10">
-              <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
-            </div>
-          ) : filteredDevices.length === 0 ? (
-            <div className="col-span-full flex justify-center py-10">
-              <p className="px-4 py-4 rounded-lg bg-red-200 text-red-800 text-center font-medium select-none ">
-                No devices found, please try a different device name.
-              </p>
-            </div>
-          ) : (
-            filteredDevices.map((data) => (
+        {loading || !favoritesLoaded ? ( //loading tracks device fetch, loaded tracks favorites fetch
+          <div className="flex justify-center py">
+            <Spinner />
+          </div>
+        ) : filteredDevices.length === 0 ? (
+          <div className="col-span-full flex justify-center py-10">
+            <p className="px-4 py-4 rounded-lg bg-red-200 text-red-800 text-center font-medium select-none ">
+              No devices found, please try a different device name.
+            </p>
+          </div>
+        ) : (
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 m-4">
+            {filteredDevices.map((data) => (
               <div
                 key={data.id + (favorites[data.id] ? "-fav" : "")}
                 className="relative rounded-xl bg-gray-800 border border-gray-700 p-5 shadow-md hover:shadow-lg transition"
@@ -123,7 +122,6 @@ function App() {
                   favorites={favorites}
                   toggleFavorite={toggleFavorite}
                 />
-
                 <img
                   src={categoryImageMap[data.category]}
                   className="w-full h-40 object-contain mb-4"
@@ -144,9 +142,9 @@ function App() {
                   {data.description}
                 </p>
               </div>
-            ))
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );
