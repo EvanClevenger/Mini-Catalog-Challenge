@@ -1,26 +1,16 @@
 import { useState, useEffect } from "react";
 import "./index.css";
+import { useFavorites } from "./Favorite";
 
 function App() {
   // const [darkMode, setDarkMode] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
   const [category, setCategory] = useState<Array<any>>([]);
-  const [categoryId, setCatagoryId] = useState<string>("");
-  // const [loading, setLoading] = useState<boolean>(true);
-  const [devices, setDevices] = useState<Array<any>>([
-    {
-      // default item to show before fetch
-      id: "item-001",
-      name: "Wireless Earbuds",
-      category: "category-001",
-      price: 49.99,
-      rating: 4.2,
-      description:
-        "Audio gear with clear, balanced sound and reliable components.",
-    },
-  ]);
+  const [categoryId, setCategoryId] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true);
+  const [devices, setDevices] = useState<Array<any>>([]);
 
-  const catagoryImageMap: Record<string, string> = {
+  const categoryImageMap: Record<string, string> = {
     "category-001": "/images/Audio.png",
     "category-002": "/images/Peripherals.png",
     "category-003": "/images/Displays.png",
@@ -28,13 +18,16 @@ function App() {
     "category-005": "/images/Gadgets.png",
   };
 
+  const { toggleFavorite, favorites, loaded } = useFavorites();
+
   const filteredDevices = devices.filter((device) => {
     const matchSearch = device.name
       .toLowerCase()
       .includes(search.toLowerCase());
     const matchCategory = categoryId ? device.category === categoryId : true;
+
     return matchSearch && matchCategory;
-  }); // Filter devices based on search input
+  }); // Filter devices based on search input and selected category
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,6 +65,25 @@ function App() {
     // We want fetch data from these mock APIs independently, as to not have both fetches fail if only one fails
     fetchData();
   }, []);
+  type FavoriteButtonProps = {
+    id: string;
+    favorites: Record<string, boolean>;
+    toggleFavorite: (id: string) => void;
+  };
+  const FavoriteButton = ({
+    id,
+    favorites,
+    toggleFavorite,
+  }: FavoriteButtonProps) => {
+    return (
+      <button
+        onClick={() => toggleFavorite(id)}
+        className="absolute bottom-3 right-3 text-lg"
+      >
+        {favorites[id] ? "❤️" : "🤍"}
+      </button>
+    );
+  };
 
   return (
     <>
@@ -90,7 +102,7 @@ function App() {
             <button
               key={index}
               className="px-4 py-2 m-4 rounded-lg bg-gray-800 border border-gray-700 text-gray-200 hover:bg-gray-700 hover:border-gray-600 transition shadow-sm"
-              onClick={() => setCatagoryId(data.id)}
+              onClick={() => setCategoryId(data.id)}
             >
               {data.name}
             </button>
@@ -98,20 +110,32 @@ function App() {
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 m-4">
-          {filteredDevices.length === 0 ? (
-            <div className=" col-span-full flex justify-center py-10">
+          {!loaded ? (
+            <div className="col-span-full flex justify-center py-10">
+              <p className="px-4 py-4 rounded-lg bg-blue-200 text-blue-800 text-center font-medium select-none ">
+                Loading devices...
+              </p>
+            </div>
+          ) : filteredDevices.length === 0 ? (
+            <div className="col-span-full flex justify-center py-10">
               <p className="px-4 py-4 rounded-lg bg-red-200 text-red-800 text-center font-medium select-none ">
                 No devices found, please try a different device name.
               </p>
             </div>
           ) : (
-            filteredDevices.map((data, index) => (
+            filteredDevices.map((data) => (
               <div
-                key={index}
-                className="rounded-xl bg-gray-800 border border-gray-700 p-5 shadow-md hover:shadow-lg transition"
+                key={data.id + (favorites[data.id] ? "-fav" : "")}
+                className="relative rounded-xl bg-gray-800 border border-gray-700 p-5 shadow-md hover:shadow-lg transition"
               >
+                <FavoriteButton
+                  id={data.id}
+                  favorites={favorites}
+                  toggleFavorite={toggleFavorite}
+                />
+
                 <img
-                  src={catagoryImageMap[data.catagory]}
+                  src={categoryImageMap[data.category]}
                   className="w-full h-40 object-contain mb-4"
                 />
 
