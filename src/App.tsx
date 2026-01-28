@@ -18,7 +18,7 @@ function App() {
     "category-005": "/images/Gadgets.png",
   };
 
-  const { toggleFavorite, favorites, loaded } = useFavorites();
+  const { toggleFavorite, favorites, favoritesLoaded } = useFavorites();
 
   const filteredDevices = devices.filter((device) => {
     const matchSearch = device.name
@@ -31,40 +31,32 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const results = await Promise.allSettled([
-        fetch("/devices.json"),
-        fetch("/categories.json"),
-      ]);
+      try {
+        const results = await Promise.allSettled([
+          fetch("/devices.json"),
+          fetch("/categories.json"),
+        ]);
 
-      const [devicesData, categoriesData] = results;
+        const [devicesData, categoriesData] = results;
 
-      // Devices fetch
-      if (devicesData.status === "fulfilled") {
-        try {
+        if (devicesData.status === "fulfilled") {
           const devices = await devicesData.value.json();
           setDevices(devices);
-        } catch (err) {
-          console.error("Failed to parse devices JSON:", err);
         }
-      } else {
-        console.error("Failed to fetch devices");
-      }
 
-      // Categories fetch
-      if (categoriesData.status === "fulfilled") {
-        try {
+        if (categoriesData.status === "fulfilled") {
           const categories = await categoriesData.value.json();
           setCategory(categories);
-        } catch (err) {
-          console.error("Failed to parse categories JSON:", err);
         }
-      } else {
-        console.error("Failed to fetch categories");
+      } finally {
+        setLoading(false); // Set loading to false after both fetches complete
       }
     };
-    // We want fetch data from these mock APIs independently, as to not have both fetches fail if only one fails
+
     fetchData();
+    //We fetch data from these mock APIs independently, as to not have both fetches fail if only one fails
   }, []);
+
   type FavoriteButtonProps = {
     id: string;
     favorites: Record<string, boolean>;
@@ -110,11 +102,9 @@ function App() {
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 m-4">
-          {!loaded ? (
+          {loading || !favoritesLoaded ? ( //loading tracks device fetch, loaded tracks favorites fetch
             <div className="col-span-full flex justify-center py-10">
-              <p className="px-4 py-4 rounded-lg bg-blue-200 text-blue-800 text-center font-medium select-none ">
-                Loading devices...
-              </p>
+              <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
             </div>
           ) : filteredDevices.length === 0 ? (
             <div className="col-span-full flex justify-center py-10">

@@ -4,7 +4,7 @@ const STORAGE_KEY = "mini_catalog:favorites";
 
 export const useFavorites = () => {
   const [favorites, setFavorites] = useState<Record<string, boolean>>({});
-  const [loaded, setLoaded] = useState(false);
+  const [favoritesLoaded, setFavoritesLoaded] = useState(false);
 
   // Load favorites once
   useEffect(() => {
@@ -14,19 +14,19 @@ export const useFavorites = () => {
         setFavorites(JSON.parse(favoritesData));
       }
     } finally {
-      setLoaded(true);
+      setFavoritesLoaded(true);
     }
   }, []);
 
   // Save favorites whenever they change
   useEffect(() => {
-    if (!loaded) return; // prevent overwriting before initial load
+    if (!favoritesLoaded) return; // prevent overwriting before initial load
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
     } catch (error) {
       console.error("Failed to save favorites to localStorage:", error);
     }
-  }, [favorites, loaded]);
+  }, [favorites, favoritesLoaded]);
 
   const toggleFavorite = (id: string) => {
     setFavorites((prev) => ({
@@ -35,5 +35,5 @@ export const useFavorites = () => {
     }));
   };
 
-  return { favorites, toggleFavorite, loaded };
+  return { favorites, toggleFavorite, favoritesLoaded };
 };
