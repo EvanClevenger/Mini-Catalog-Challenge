@@ -12,7 +12,7 @@ export function FavoriteButton({
   return (
     <button
       onClick={() => toggleFavorite(id)}
-      className="absolute bottom-3 right-3 text-lg"
+      className="text-2xl focus:outline-none"
       title={"Favorite this item"}
     >
       {favorites[id] ? "❤️" : "🤍"}

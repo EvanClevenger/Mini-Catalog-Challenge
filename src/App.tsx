@@ -124,7 +124,7 @@ function App() {
                 onMouseEnter={() => {
                   const timer = setTimeout(() => {
                     setHoverModalData(data);
-                  }, 3000);
+                  }, 3500);
                   data.hoverTimer = timer;
                 }}
                 onMouseLeave={() => {
@@ -163,6 +163,8 @@ function App() {
         {hoverModalData && (
           <HoverModal
             data={hoverModalData}
+            favorites={favorites}
+            toggleFavorite={toggleFavorite}
             onClose={() => setHoverModalData(null)}
           />
         )}
