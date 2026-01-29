@@ -26,7 +26,9 @@ function App() {
   const [categoryId, setCategoryId] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
   const [devices, setDevices] = useState<Device[]>([]);
-  const [sortBy, setSortBy] = useState<"none" | "price" | "rating">("none");
+  const [sortBy, setSortBy] = useState<
+    "none" | "price" | "rating" | "name" | "category"
+  >("none");
   const [hoverModalData, setHoverModalData] = useState<Device | null>(null);
 
   const { toggleFavorite, favorites, favoritesLoaded } = useFavorites();
@@ -44,7 +46,16 @@ function App() {
     filteredDevices = [...filteredDevices].sort((a, b) => a.price - b.price);
   } else if (sortBy === "rating") {
     filteredDevices = [...filteredDevices].sort((a, b) => b.rating - a.rating);
-  } // Sort devices based on selected criteria , ... ensures we don't mutate original array
+  } else if (sortBy === "name") {
+    filteredDevices = [...filteredDevices].sort((a, b) =>
+      a.name.localeCompare(b.name),
+    );
+  } else if (sortBy === "category") {
+    filteredDevices = [...filteredDevices].sort((a, b) =>
+      a.category.localeCompare(b.category),
+    );
+  }
+  // Sort devices based on selected criteria , ... ensures we don't mutate original array
 
   useEffect(() => {
     const fetchData = async () => {
@@ -102,6 +113,28 @@ function App() {
             }`}
           >
             Sort by Rating
+          </button>
+          <button
+            onClick={() => setSortBy(sortBy === "name" ? "none" : "name")}
+            className={`px-4 py-2 m-4 rounded-lg border transition shadow-sm ${
+              sortBy === "name"
+                ? "bg-blue-600 border-blue-500 text-white"
+                : "bg-gray-800 border-gray-700 text-gray-200 hover:bg-gray-700 hover:border-gray-600"
+            }`}
+          >
+            Sort by name (A to Z)
+          </button>
+          <button
+            onClick={() =>
+              setSortBy(sortBy === "category" ? "none" : "category")
+            }
+            className={`px-4 py-2 m-4 rounded-lg border transition shadow-sm ${
+              sortBy === "category"
+                ? "bg-blue-600 border-blue-500 text-white"
+                : "bg-gray-800 border-gray-700 text-gray-200 hover:bg-gray-700 hover:border-gray-600"
+            }`}
+          >
+            Sort by category (A to Z)
           </button>
         </div>
 
