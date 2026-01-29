@@ -4,8 +4,20 @@ import { SearchBar } from "../components/SearchBar";
 import { CategoryFilters } from "../components/CategoryFilters";
 import { FavoriteButton } from "../components/FavoriteButton";
 import { Spinner } from "../components/Spinner";
+import { CategoryImages as categoryImageMap } from "../components/CatagoryImages";
+import { HoverModal } from "../components/HoverModal";
 
 import { useFavorites } from "../hooks/useFavorite";
+
+type Device = {
+  id: string;
+  name: string;
+  category: string;
+  price: number;
+  rating: number;
+  description: string;
+  hoverTimer?: number;
+}; // types go above the component
 
 function App() {
   // const [darkMode, setDarkMode] = useState<boolean>(false);
@@ -13,27 +25,20 @@ function App() {
   const [category, setCategory] = useState<Array<any>>([]);
   const [categoryId, setCategoryId] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
-  const [devices, setDevices] = useState<Array<any>>([]);
+  const [devices, setDevices] = useState<Device[]>([]);
   const [sortBy, setSortBy] = useState<"none" | "price" | "rating">("none");
-
-  const categoryImageMap: Record<string, string> = {
-    "category-001": "/images/Audio.png",
-    "category-002": "/images/Peripherals.png",
-    "category-003": "/images/Displays.png",
-    "category-004": "/images/Accessories.png",
-    "category-005": "/images/Gadgets.png",
-  };
+  const [hoverModalData, setHoverModalData] = useState<Device | null>(null);
 
   const { toggleFavorite, favorites, favoritesLoaded } = useFavorites();
 
   let filteredDevices = devices.filter((device) => {
     const matchSearch = device.name
       .toLowerCase()
-      .includes(search.toLowerCase());
+      .includes(search.toLowerCase()); //search bar functionality
     const matchCategory = categoryId ? device.category === categoryId : true;
-
+    // category filter functionality
     return matchSearch && matchCategory;
-  }); // Filter devices based on search input and selected category
+  });
 
   if (sortBy === "price") {
     filteredDevices = [...filteredDevices].sort((a, b) => a.price - b.price);
@@ -101,7 +106,7 @@ function App() {
         </div>
 
         {loading || !favoritesLoaded ? ( //loading tracks device fetch, loaded tracks favorites fetch
-          <div className="flex justify-center py">
+          <div className="flex justify-center py-10">
             <Spinner />
           </div>
         ) : filteredDevices.length === 0 ? (
@@ -116,6 +121,16 @@ function App() {
               <div
                 key={data.id + (favorites[data.id] ? "-fav" : "")}
                 className="relative rounded-xl bg-gray-800 border border-gray-700 p-5 shadow-md hover:shadow-lg transition"
+                onMouseEnter={() => {
+                  const timer = setTimeout(() => {
+                    setHoverModalData(data);
+                  }, 3000);
+                  data.hoverTimer = timer;
+                }}
+                onMouseLeave={() => {
+                  clearTimeout(data.hoverTimer);
+                  // setHoverModalData(null);
+                }}
               >
                 <FavoriteButton
                   id={data.id}
@@ -144,6 +159,12 @@ function App() {
               </div>
             ))}
           </div>
+        )}
+        {hoverModalData && (
+          <HoverModal
+            data={hoverModalData}
+            onClose={() => setHoverModalData(null)}
+          />
         )}
       </div>
     </>

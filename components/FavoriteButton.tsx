@@ -13,6 +13,7 @@ export function FavoriteButton({
     <button
       onClick={() => toggleFavorite(id)}
       className="absolute bottom-3 right-3 text-lg"
+      title={"Favorite this item"}
     >
       {favorites[id] ? "❤️" : "🤍"}
     </button>
