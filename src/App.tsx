@@ -30,6 +30,7 @@ function App() {
     "none" | "price" | "rating" | "name" | "category"
   >("none");
   const [hoverModalData, setHoverModalData] = useState<Device | null>(null);
+  const [error, setError] = useState<boolean>(false);
 
   const { toggleFavorite, favorites, favoritesLoaded } = useFavorites();
 
@@ -70,12 +71,18 @@ function App() {
         if (devicesData.status === "fulfilled") {
           const devices = await devicesData.value.json();
           setDevices(devices);
+        } else {
+          setError(true);
         }
 
         if (categoriesData.status === "fulfilled") {
           const categories = await categoriesData.value.json();
           setCategory(categories);
+        } else {
+          setError(true);
         }
+      } catch (err) {
+        setError(true);
       } finally {
         setLoading(false); // Set loading to false after both fetches complete
       }
@@ -92,59 +99,45 @@ function App() {
           <SearchBar setSearch={setSearch} />
         </div>
 
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-6 flex flex-wrap justify-center  items-center gap-4">
           <CategoryFilters
             category={category}
             setCategoryId={setCategoryId}
             categoryId={categoryId}
           />
-          <button
-            onClick={() => setSortBy(sortBy === "price" ? "none" : "price")}
-            className={`px-4 py-2 m-4 rounded-lg border transition shadow-sm ${
-              sortBy === "price"
-                ? "bg-blue-600 border-blue-500 text-white"
-                : "bg-gray-800 border-gray-700 text-gray-200 hover:bg-gray-700 hover:border-gray-600"
-            }`}
-          >
-            Sort by Price
-          </button>
-          <button
-            onClick={() => setSortBy(sortBy === "rating" ? "none" : "rating")}
-            className={`px-4 py-2 m-4 rounded-lg border transition shadow-sm ${
-              sortBy === "rating"
-                ? "bg-blue-600 border-blue-500 text-white"
-                : "bg-gray-800 border-gray-700 text-gray-200 hover:bg-gray-700 hover:border-gray-600"
-            }`}
-          >
-            Sort by Rating
-          </button>
-          <button
-            onClick={() => setSortBy(sortBy === "name" ? "none" : "name")}
-            className={`px-4 py-2 m-4 rounded-lg border transition shadow-sm ${
-              sortBy === "name"
-                ? "bg-blue-600 border-blue-500 text-white"
-                : "bg-gray-800 border-gray-700 text-gray-200 hover:bg-gray-700 hover:border-gray-600"
-            }`}
-          >
-            Sort by name (A to Z)
-          </button>
-          <button
-            onClick={() =>
-              setSortBy(sortBy === "category" ? "none" : "category")
-            }
-            className={`px-4 py-2 m-4 rounded-lg border transition shadow-sm ${
-              sortBy === "category"
-                ? "bg-blue-600 border-blue-500 text-white"
-                : "bg-gray-800 border-gray-700 text-gray-200 hover:bg-gray-700 hover:border-gray-600"
-            }`}
-          >
-            Sort by category (A to Z)
-          </button>
+          <div className="m-4">
+            <select
+              value={sortBy}
+              onChange={(e) =>
+                setSortBy(
+                  e.target.value as
+                    | "none"
+                    | "price"
+                    | "rating"
+                    | "name"
+                    | "category",
+                )
+              }
+              className="px-4 py-2 bg-gray-800 border border-gray-700 text-gray-200 rounded-lg shadow-sm hover:bg-gray-700 hover:border-gray-600 transition"
+            >
+              <option value="none">Sort By</option>
+              <option value="price">Price</option>
+              <option value="rating">Rating</option>
+              <option value="name">Name</option>
+              <option value="category">Category</option>
+            </select>
+          </div>
         </div>
 
         {loading || !favoritesLoaded ? ( //loading tracks device fetch, loaded tracks favorites fetch
           <div className="flex justify-center py-10">
             <Spinner />
+          </div>
+        ) : error ? (
+          <div className="col-span-full flex justify-center py-10">
+            <p className="px-4 py-4 rounded-lg bg-red-200 text-red-800 text-center font-medium select-none">
+              Failed to load catalog data. Please try again later.
+            </p>
           </div>
         ) : filteredDevices.length === 0 ? (
           <div className="col-span-full flex justify-center py-10">
@@ -161,7 +154,7 @@ function App() {
                 onMouseEnter={() => {
                   const timer = setTimeout(() => {
                     setHoverModalData(data);
-                  }, 3500);
+                  }, 2500);
                   data.hoverTimer = timer;
                 }}
                 onMouseLeave={() => {
