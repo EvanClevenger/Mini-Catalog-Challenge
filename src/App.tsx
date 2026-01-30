@@ -16,7 +16,7 @@ type Device = {
   price: number;
   rating: number;
   description: string;
-  hoverTimer?: number;
+  hoverTimer: number | NodeJS.Timeout;
 }; // types go above the component
 
 function App() {
@@ -159,7 +159,6 @@ function App() {
                 }}
                 onMouseLeave={() => {
                   clearTimeout(data.hoverTimer);
-                  // setHoverModalData(null);
                 }}
               >
                 <FavoriteButton
