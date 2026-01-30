@@ -93,7 +93,11 @@ function App() {
         </div>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <CategoryFilters category={category} setCategoryId={setCategoryId} />
+          <CategoryFilters
+            category={category}
+            setCategoryId={setCategoryId}
+            categoryId={categoryId}
+          />
           <button
             onClick={() => setSortBy(sortBy === "price" ? "none" : "price")}
             className={`px-4 py-2 m-4 rounded-lg border transition shadow-sm ${
